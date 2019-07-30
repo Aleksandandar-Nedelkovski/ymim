@@ -27,7 +27,7 @@ class Events extends Component {
 
   render() {
     return (
-      <div class="upcoming-events">
+      <div>
         <h1>Upcoming Events</h1>
         <div className="eventbright-results">
           <EventList>
@@ -55,9 +55,7 @@ class Events extends Component {
           </EventList>
         </div>
       </div>
-      <div className="past-events">
-        <h1>Past Events</h1>
-      </div>
+      // past events
     );
   }
 }
