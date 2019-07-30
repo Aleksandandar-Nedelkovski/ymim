@@ -27,7 +27,7 @@ class Events extends Component {
 
   render() {
     return (
-      <div>
+      <div class="upcoming-events">
         <h1>Upcoming Events</h1>
         <div className="eventbright-results">
           <EventList>
@@ -54,6 +54,9 @@ class Events extends Component {
             </CardDeck>
           </EventList>
         </div>
+      </div>
+      <div className="past-events">
+        <h1>Past Events</h1>
       </div>
     );
   }
