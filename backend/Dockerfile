@@ -1,17 +1,17 @@
-FROM python:3.7.3
+FROM ruby:2.3.1
+RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
+RUN mkdir /myapp
+WORKDIR /myapp
+COPY Gemfile /myapp/Gemfile
+COPY Gemfile.lock /myapp/Gemfile.lock
+RUN bundle install
+COPY . /myapp
 
-ENV PYTHONUNBUFFERED 1
+# Add a script to be executed every time the container starts.
+COPY entrypoint.sh /usr/bin/
+RUN chmod +x /usr/bin/entrypoint.sh
+ENTRYPOINT ["docker-entrypoint.sh"]
+EXPOSE 3000
 
-RUN apt-get update -y
-RUN apt-get install -y postgresql postgresql-contrib
-RUN apt-get clean
-
-RUN mkdir /code
-WORKDIR /code
-ADD . /code/
-
-RUN pip install --upgrade pip
-RUN pip install pipenv
-RUN pipenv install --system
-    
-ENTRYPOINT ["./docker-entrypoint.sh"]
+# Start the main process.
+CMD ["rails", "server", "-b", "0.0.0.0"]
