@@ -3,20 +3,19 @@ import { Container, Row, Col } from "react-bootstrap";
 import "./volunteer.css";
 import SingleCarousel from "../SingleCarousel/index";
 
+const validEmailRegex = RegExp(
+  /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+);
 
+const validPhoneRegex = RegExp(
+  /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im
+);
 
-const validEmailRegex = RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
-
-
-const validPhoneRegex= RegExp(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im);
-
-
-
-const validateForm = (errors) => {
+const validateForm = errors => {
   let valid = true;
   Object.values(errors).forEach(
     // if we have an error string set valid to false
-    (val) => val.length > 0 && (valid = false)
+    val => val.length > 0 && (valid = false)
   );
   return valid;
 };
@@ -31,7 +30,12 @@ class Volunteer extends Component {
       email: "",
       phone: "",
       website: "",
-      message: ""
+      message: "",
+      errors: {
+        name: "",
+        email: "",
+        number: ""
+      }
     };
   }
 
@@ -39,6 +43,8 @@ class Volunteer extends Component {
     const target = event.target;
     const value = target.value;
     const name = target.name;
+
+    let errors = this.state.errors;
 
     this.setState({
       [name]: value
