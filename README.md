@@ -21,7 +21,27 @@ The backend application is written in Python, using the [Django](https://www.dja
 
 ## Getting Started With The App
 
-I'm going to be very blunt: this will be much, much easier on a Mac or Linux system than it will be on a PC. On any PC that doesn't have Hyper-V (any system running any OS older/less powerful than Win10 Pro), you're going to need to run older, mostly unsupported programs. We strongly recommend that you either use a Mac or move to Linux.
+
+
+### Technical Setup
+
+- Clone and go into the application
+
+        git clone https://github.com/the-difference-engine/ymim.git
+        cd ymim
+
+        - Install homebrew
+
+                /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+        - Install Node & NPM
+
+                brew install node
+
+        - Install Pipenv: 
+
+                brew install pipenv
+
 
 ### Mac/Linux Users
 - Install homebrew

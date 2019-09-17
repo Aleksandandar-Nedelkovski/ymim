@@ -2,6 +2,7 @@ import os
 
 import dotenv
 
+
 try:
     # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -85,6 +86,15 @@ TEMPLATES = [
 AUTHENTICATION_BACKENDS = ["django.contrib.auth.backends.ModelBackend"]
 
 WSGI_APPLICATION = "backend.wsgi.application"
+
+# 'default': {
+#     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#     'NAME': "postgres",
+#     'USER': "postgres",
+#     'PASSWORD': "password",
+#     'HOST': "db",
+#     'PORT': 5432,
+#   }
 
 DATABASES = {
     "default": {
