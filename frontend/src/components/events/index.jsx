@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { events } from "../../actions";
 import "./index.css";
 import EventList from "./EventList";
+import Sponsors from "./Sponsors";
 
 class Events extends Component {
   constructor(props) {
@@ -20,10 +21,16 @@ class Events extends Component {
     let events = this.props.events.filter(s =>
       ["live", "started", "ended", "completed"].includes(s.status)
     );
-    if (events.length) {
-      return <EventList events={events} />;
-    }
-    return "Check back soon for events";
+    return (
+      <div>
+        {events.length ? (
+          <EventList events={events} />
+        ) : (
+          "Check back soon for events"
+        )}
+        <Sponsors />
+      </div>
+    );
   }
 }
 
