@@ -25,26 +25,26 @@ The backend application is written in Python, using the [Django](https://www.dja
 
 ### Technical Setup
 
-- Clone and go into the application
+Clone and go into the application
 
-        git clone https://github.com/the-difference-engine/ymim.git
-        cd ymim
+    git clone https://github.com/the-difference-engine/ymim.git
+    cd ymim
 
-- Install homebrew
+Install homebrew
 
-        /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-- Install Node & NPM
+Install Node & NPM
 
-        brew install node
+    brew install node
 
-- Install Pipenv: 
+Install Pipenv: 
 
-        brew install pipenv
+    brew install pipenv
 
 You should now be in the root of the project
 
-When you first clone the repo, you will need to create and populate `.env` files in the `backend/` directory to make the applications work correctly. Currently, we only require variables on the backend. 
+When you first clone the repo, you will need to create and populate `.env` files in the `backend/` directory to make the application work correctly. Currently, we only require variables on the backend. 
 
 To get to the backend, type
 
@@ -67,7 +67,7 @@ Copy the key you see in the console and add in here with the rest of the variabl
     DB_PORT=5432
 
 
-We will use VI a screen editor Linux/Unix like systems to paste these variables into a `.env` file. Run this to create the file
+We will use VI, a screen editor for Linux/Unix systems, to paste these variables into a `.env` file. Run this to create the file
 
       vi .env
 
@@ -99,10 +99,11 @@ We can do this by typing
 
 To run the application, we will start the FrontEnd and Backend Services. Since we are currently in the FrontEnd Directory, we will start the Frontend first. 
 
-We can do this by running. And then visit `http://localhost:3000` to see the application
+We can do this by running
 
       npm start
 
+And then visit `http://localhost:3000` to see the application
 
 To start the Backend, go into a new terminal window and get to the root of the directory. 
 When you open your new window, you may be in the Frontend directory still and to get to the Backend Directory, you can type 
