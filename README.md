@@ -30,19 +30,110 @@ The backend application is written in Python, using the [Django](https://www.dja
         git clone https://github.com/the-difference-engine/ymim.git
         cd ymim
 
-        - Install homebrew
+- Install homebrew
 
-                /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+        /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-        - Install Node & NPM
+- Install Node & NPM
 
-                brew install node
+        brew install node
 
-        - Install Pipenv: 
+- Install Pipenv: 
 
-                brew install pipenv
+        brew install pipenv
+
+You should now be in the root of the project
+
+When you first clone the repo, you will need to create and populate `.env` files in the `backend/` directory to make the applications work correctly. Currently, we only require variables on the backend. 
+
+To get to the backend, type
+
+    cd backend
+
+One of the variables we will need is a secret key to run the Django server. 
+Let's generate this now by running
+
+      pipenv run secret_key
+
+Copy the key you see in the console and add in here with the rest of the variables you will need.
+
+    SECRET_KEY=<YOUR_COPIED_SECRET_KEY>
+    DEBUG=True
+    DB_ENGINE="django.db.backends.postgresql"
+    DB_NAME="postgres"
+    DB_USER="postgres"
+    DB_PASSWORD="password"
+    DB_HOST="db"
+    DB_PORT=5432
 
 
+We will use VI a screen editor Linux/Unix like systems to paste these variables into a `.env` file. Run this to create the file
+
+      vi .env
+
+
+Paste in your variables and make sure they look exactly the same as in this ReadMe. 
+Then run this to save the file. 
+
+      :wq!
+
+Now lets install the backend dependencies via pip. 
+Lets type 
+
+      pip install --dev
+
+Once that is complete, let's go back to the root of project by typing
+
+      cd ..
+
+Next we need to install the FrontEnd Dependencies. 
+We will need to be in the frontend directory for this, so lets type this:
+
+      cd frontend
+
+We will use [the Node Package Manager (npm)](https://nodejs.org/en/knowledge/getting-started/npm/what-is-npm/) to install the dependencies. 
+
+We can do this by typing
+
+      npm install
+
+To run the application, we will start the FrontEnd and Backend Services. Since we are currently in the FrontEnd Directory, we will start the Frontend first. 
+
+We can do this by running. And then visit `http://localhost:3000` to see the application
+
+      npm start
+
+
+To start the Backend, go into a new terminal window and get to the root of the directory. 
+When you open your new window, you may be in the Frontend directory still and to get to the Backend Directory, you can type 
+
+      cd ..
+      cd backend
+
+Once we are in the backend directory we will need to create a virtual python environment. 
+We can do this by running
+
+      virtualenv ymim
+
+This will create a virutal environment but we will still need to activate it. 
+To do that we can type
+        
+      source ymim/bin/activate
+
+This will take us into the virtual environment. 
+We will need to install the dependencies for this environment which we can do by typing
+
+      pipenv install
+
+We can now finally start the Backend Server by running. 
+
+      python manage.py runserver 0.0.0.0:8000
+
+This will launch the backend server on port 8000. To see if its working you can visit `http://localhost:8000/`. IF working, it should return a Django format Unauthorized error.
+
+
+
+## Legacy Setup (w Docker)
 ### Mac/Linux Users
 - Install homebrew
 
@@ -150,9 +241,6 @@ The application is deployed in two Heroku pipelines in the young-masterbuilders 
 ### Frontend
 We're using the [lstoll/heroku-buildpack-monorepo](https://github.com/lstoll/heroku-buildpack-monorepo) & [mars/create-react-app](https://github.com/mars/create-react-app-buildpack) buildpacks. They must be installed in that order to function.
 
-### Required Frontend Env Vars
-
-    APP_BASE=frontend
 
 ### Backend
 On the backend, we use a Python package to extract the DB information from a DATABASE_URL that Heroku provides, so we need fewer environment variables. Make sure to manually create the SECRET_KEY, using the same `pipenv run secret_key`
