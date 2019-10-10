@@ -18,6 +18,7 @@
 }
 
 .eventImage.floating {
+  background-color: black;
   float: left;
   margin: 14px;
 }

@@ -1,10 +1,13 @@
 .checkBack {
+  background-color: #eeeaea;
   display: flex;
   max-width: 1310px;
   margin: auto;
   padding: 0 14px;
 }
-
+.background {
+  color: black;
+}
 @media screen and (max-width: 679px) {
   .checkBack {
     max-width: 334px;

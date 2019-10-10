@@ -8,7 +8,7 @@ const EventList = ({ events }) => {
   const firstUpcoming = findFirstUpcomingIndex(events);
   if (firstUpcoming === undefined) {
     return (
-      <div>
+      <div className = "background">
         <EventSection events={[]} isUpcoming={true} />
         <div className="checkBack">
           Check back again soon for what is coming up next for YMIM. If you have
