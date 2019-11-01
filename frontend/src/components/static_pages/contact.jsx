@@ -9,7 +9,7 @@ class Contact extends Component {
       <>
         <SingleCarousel
           className="carousel"
-          header="Contact Us"
+          header="Young MasterBuilders in Motion"
           image="ymim5.png"
         />
         <div className="container">
